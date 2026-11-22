@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Snake</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main id="gameApp">
+      <div class="loginScreen" id="loginScreen">
+        <section class="loginCard" aria-label="Player login">
+          <div class="loginMark">🐍</div>
+          <p class="loginEyebrow">WELCOME TO</p>
+          <h1>Snake Quiz</h1>
+          <p class="loginText">Sign in to save your score and play.</p>
+          <form id="loginForm">
+            <label for="username">Username</label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              autocomplete="username"
+              minlength="2"
+              required
+              placeholder="Enter your username"
+            />
+            <label for="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              minlength="4"
+              required
+              placeholder="Enter your password"
+            />
+            <p class="loginError" id="loginError" role="alert"></p>
+            <button class="loginButton" id="loginButton" type="submit">
+              Log in
+            </button>
+          </form>
+          <button
+            class="authSwitch"
+            id="authSwitch"
+            type="button"
+          >
+            New player? Create an account
+          </button>
+        </section>
+      </div>
+      <header>
+        <span>Score <b id="score">0</b></span
+        ><span>Level <b id="level">1</b></span
+        ><span class="tools"
+          ><button id="pause">Pause</button
+          ><button id="snd" aria-pressed="true">Sound on</button
+          ><button id="logout">Logout</button></span
+        ><span>Best <b id="best">0</b></span>
+      </header>
+      <div class="wrap">
+        <canvas
+          id="c"
+          width="400"
+          height="400"
+          aria-label="Snake board"
+        ></canvas>
+        <div class="overlay" id="ov">
+          <h1 id="ovTitle">Snake</h1>
+          <p id="ovText">Eat the glowing friend photos to grow. Swipe, use arrow keys, or tap the arrows.</p>
+          <div class="opts" id="diff" role="group" aria-label="Difficulty">
+            <button data-s="easy" aria-pressed="false">Easy</button
+            ><button data-s="normal" aria-pressed="true">Normal</button
+            ><button data-s="hard" aria-pressed="false">Hard</button>
+          </div>
+          <div class="opts" id="mods" role="group" aria-label="Game options">
+            <button id="rockBtn" aria-pressed="false">Rocks: off</button
+            ><button id="wrapBtn" aria-pressed="false">Walls: solid</button>
+          </div>
+          <div class="opts" id="skins" role="group" aria-label="Snake color">
+            <button
+              class="sw"
+              data-k="0"
+              aria-pressed="true"
+              aria-label="Rainbow"
+              style="background:linear-gradient(135deg,#ef4444,#facc15,#22c55e,#3b82f6,#a855f7)"
+            ></button
+            ><button
+              class="sw"
+              data-k="1"
+              aria-pressed="false"
+              aria-label="Blue"
+              style="background:#3b82f6"
+            ></button
+            ><button
+              class="sw"
+              data-k="2"
+              aria-pressed="false"
+              aria-label="Purple"
+              style="background:#a855f7"
+            ></button
+            ><button
+              class="sw"
+              data-k="3"
+              aria-pressed="false"
+              aria-label="Orange"
+              style="background:#f59e0b"
+            ></button>
+          </div>
+          <button class="main" id="go">Start</button>
+          <ol id="top" aria-label="Top scores"></ol>
+        </div>
+        <div class="quiz" id="quizPanel" aria-live="polite" hidden>
+          <div class="quizTop"><b>Solve to keep the food!</b><span id="quizTimer">15</span></div>
+          <h2 id="quizQuestion">Question</h2>
+          <div class="quizAnswers" id="quizAnswers"></div>
+        </div>
+      </div>
+      <div class="dpad" aria-label="Direction buttons">
+        <button class="u" data-d="up" aria-label="Up">▲</button>
+        <button class="l" data-d="left" aria-label="Left">◀</button>
+        <button class="d" data-d="down" aria-label="Down">▼</button>
+        <button class="r" data-d="right" aria-label="Right">▶</button>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
